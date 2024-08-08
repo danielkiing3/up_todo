@@ -1,0 +1,10 @@
+flutter_native_splash:
+  color: "#000000"
+  image: assets/logos/up_todo_splash_logo.png
+
+  #TODO: Fix the image for Android 12 
+  android_12:
+    image: assets/logos/up_todo_splash_logo.png
+    color: "#000000"
+  
+  web: false

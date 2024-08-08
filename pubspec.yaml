@@ -1,0 +1,78 @@
+name: up_todo
+description: "A new Flutter project."
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+#----------------- PACKAGES ---------------- #
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UTILITY PACKAGES #
+  flutter_native_splash: ^2.4.1
+
+
+  # ICONS #
+  cupertino_icons: ^1.0.6
+  iconsax_plus: ^1.0.0
+  iconsax: ^0.0.8
+
+
+  # STATE MANAGEMENT #
+  get: ^4.6.6
+  get_storage: ^2.1.1 # STORAGE
+
+
+
+  # PRODUCT SPECIFIC #
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  #----------------- LOCAL ASSETS ---------------- #
+  assets:
+    - assets/logos/
+    - assets/images/on_boarding/
+    - assets/google_fonts/
+    - assets/images/randoms/
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
