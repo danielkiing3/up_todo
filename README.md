@@ -1,16 +1,18 @@
-# up_todo
+# Up Todo App
 
-A new Flutter project.
+A Todo List App
 
-## Getting Started
+Based on UI design by [Amir Baghestani](https://www.figma.com/@amir_uiux)
+UI Link: [UpTodo - Todo list app UI Kit](https://www.figma.com/community/file/1083383246788717048)
 
-This project is a starting point for a Flutter application.
+## Installation
 
-A few resources to get you started if this is your first Flutter project:
+Follow the installation guide at [Official Flutter Installation Page](https://docs.flutter.dev/get-started/install)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Setting up locally 
+- Clone the repo locally
+- Navigate to the folder and run `flutter pub get` to install the required dart packages
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Running the application
+Simply run `flutter run` command from the terminal
