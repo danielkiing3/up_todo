@@ -14,7 +14,12 @@ class IndexScreen extends StatelessWidget {
     return Scaffold(
       appBar: UAppBar(
         leadingIcon: IconsaxPlusLinear.sort,
-        title: Text(UTexts.index),
+        title: const Text(UTexts.index),
+        actions: [
+          Image(
+            image: AssetImage(UImages.user),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(USizes.defaultSpace),
