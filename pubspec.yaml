@@ -22,7 +22,11 @@ dependencies:
 
 
   # STATE MANAGEMENT #
-  get: ^4.6.6
+  flutter_riverpod: ^2.5.1 # Main State Management
+  get: ^4.6.6 # Depreciate in favour of Riverpod
+
+  # I want to migrate to a different storage solution as well
+  # Maybe [SqLite], [Hive], [Moor], [Shared Preferences]
   get_storage: ^2.1.1 # STORAGE
 
 
