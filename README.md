@@ -12,6 +12,9 @@ Follow the installation guide at [Official Flutter Installation Page](https://do
 - Clone the repo locally
 - Navigate to the folder and run `flutter pub get` to install the required dart packages
 
+Folder Structure
+- Features first(Layers inside Feature)
+
 
 ## Running the application
 Simply run `flutter run` command from the terminal
