@@ -27,3 +27,5 @@ void main() async {
 
   runApp(const ProviderScope(child: App()));
 }
+
+//TODO: Resolve issue with app working on Android 
