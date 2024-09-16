@@ -33,7 +33,6 @@ class RegisterNotifier extends Notifier {
       // Check network connectivity
       final isConnected = ref.read(networkManagerProvider);
       if (!isConnected.hasValue) {
-        print('No Network ');
         UNetworkRequestPopup.stopLoadingDialog(context);
         return;
       }
@@ -58,7 +57,38 @@ class RegisterNotifier extends Notifier {
     }
   }
 
-  Future<void> registerWithGoogle() async {}
+  Future<void> registerWithGoogle(BuildContext context) async {
+    try {
+      // Start the loading dialog
+      UNetworkRequestPopup.openLoadingDialog(context);
+
+      // Check network connectivity
+      final isConnected = ref.read(networkManagerProvider);
+      if (!isConnected.hasValue) {
+        UNetworkRequestPopup.stopLoadingDialog(context);
+        return;
+      }
+
+      // Attempt to sign in with email and password
+      await ref.read(authRepository).signInWithGoogle();
+
+      //TODO: Save user record
+
+      // Stop Popup
+      if (context.mounted) {
+        USnackBarPopup.sucessSnackBar(context,
+            title: 'Congrats', message: 'User succesffuly created');
+        UNetworkRequestPopup.stopLoadingDialog(context);
+        context.goNamed(URoutes.homeScreen);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        UNetworkRequestPopup.stopLoadingDialog(context);
+        USnackBarPopup.errorSnackBar(context,
+            message: e.toString(), title: 'Oh Snap!');
+      }
+    }
+  }
 
   Future<void> registerWithApple() async {}
 }
