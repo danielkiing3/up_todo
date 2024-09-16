@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:up_todo/src/common/widgets/appbar/app_bar.dart';
 import 'package:up_todo/src/features/authenication/presentation/controllers/register/register_provider.dart';
 import 'package:up_todo/src/features/authenication/presentation/screens/register/widgets/register_form.dart';
+import 'package:up_todo/src/utils/constants/routes.dart';
 
 import '../../../../../common/widgets/buttons/elevated_button.dart';
 import '../../../../../common/widgets/buttons/social_button.dart';
@@ -50,7 +51,9 @@ class RegisterScreen extends ConsumerWidget {
               USocialButton(
                 image: UImages.google,
                 text: UTexts.registerWithGoogle,
-                onPressed: () {},
+                onPressed: () => ref
+                    .read(registerProvider.notifier)
+                    .registerWithGoogle(context),
               ),
               const SizedBox(height: USizes.defaultSpace),
 
@@ -63,7 +66,10 @@ class RegisterScreen extends ConsumerWidget {
 
               /// -- Bottom Rich Text
               const ULoginRegisterRichText(
-                  text: UTexts.alreadyhaveaccount, addText: UTexts.login),
+                text: UTexts.alreadyhaveaccount,
+                addText: UTexts.login,
+                location: URoutes.loginScreen,
+              ),
             ],
           ),
         ),

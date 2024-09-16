@@ -4,6 +4,7 @@ import 'package:up_todo/src/common/widgets/appbar/app_bar.dart';
 import 'package:up_todo/src/common/widgets/texts/section_heading.dart';
 import 'package:up_todo/src/features/authenication/presentation/controllers/login/login_provider.dart';
 import 'package:up_todo/src/utils/constants/image_strings.dart';
+import 'package:up_todo/src/utils/constants/routes.dart';
 import 'package:up_todo/src/utils/constants/sizes.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
 
@@ -51,7 +52,8 @@ class LoginScreen extends ConsumerWidget {
               USocialButton(
                 image: UImages.google,
                 text: UTexts.loginWithGoogle,
-                onPressed: () {},
+                onPressed: () =>
+                    ref.read(loginProvider.notifier).loginWithGoogle(context),
               ),
               const SizedBox(height: USizes.defaultSpace),
 
@@ -64,7 +66,10 @@ class LoginScreen extends ConsumerWidget {
 
               /// -- Bottom Rich Text
               const ULoginRegisterRichText(
-                  text: UTexts.donthaveaccount, addText: UTexts.register),
+                text: UTexts.donthaveaccount,
+                addText: UTexts.register,
+                location: URoutes.createAccountScreen,
+              ),
             ],
           ),
         ),
