@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../models/category/category_model.dart';
+import 'task_tag_provider.dart';
+
+class ChooseCategoryNotifier extends Notifier<Category?> {
+  @override
+  Category? build() {
+    return null;
+  }
+
+  void reset() {
+    state = null;
+  }
+
+  void update(Category value) {
+    if (value.isCreateNewButton == false) {
+      state = value;
+    } else {
+      //TODO: Open create category full screen modal
+    }
+  }
+
+  void addCategory(BuildContext context) {
+    // Check if a Category was selected
+    if (state != null) {
+      // Update the [taskTagProvider] and pop dialog
+      ref.read(taskTagProvider.notifier).updateCategory(state!);
+      context.pop();
+    } else {
+      //TODO: SHow some error dialog
+    }
+  }
+}
+
+final chooseCategoryProvider =
+    NotifierProvider<ChooseCategoryNotifier, Category?>(
+        ChooseCategoryNotifier.new);

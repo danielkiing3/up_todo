@@ -20,6 +20,7 @@ class UTexts {
   static const String addTask = 'Add Task';
   static const String getStarted = 'GET STARTED';
   static const String description = 'Description';
+  static const String exampleTitle = 'e.g. Do your bills';
   static const String chooseTime = 'Choose Time';
   static const String placeholdeerUser = 'Funmi Emma';
 
@@ -108,6 +109,9 @@ class UTexts {
   static const String changeAppTypography = 'Change App Typography';
   static const String changeAppLanguage = 'Change App Language';
   static const String importFromGoogleCalender = 'Import From Google Calender';
+
+  /// -- Dialog heaing
+  static const String taskPriority = 'Task Priority';
 
   /// -- Setting Menu Heading
   static const String settings = 'Settings';

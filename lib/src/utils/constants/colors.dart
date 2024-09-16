@@ -47,6 +47,7 @@ class UColors {
   static const Color grey = Color.fromARGB(255, 83, 83, 83);
   static const Color darkGrey = Color.fromARGB(255, 79, 79, 79);
   static const Color darkerGrey = Color.fromARGB(255, 29, 29, 29);
+  static const Color darkestGrey = Color.fromARGB(255, 39, 39, 39);
   static const Color white = Color.fromARGB(255, 255, 255, 255);
 
   /// -- Category Color

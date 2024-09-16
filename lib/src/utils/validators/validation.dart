@@ -15,7 +15,7 @@ class UValidator {
   ///
   /// Returns an error message if the field is empty, or `null` if valid.
   static String? validateEmptyText(String? fieldName, String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.length < 3) {
       return '$fieldName is required';
     }
 

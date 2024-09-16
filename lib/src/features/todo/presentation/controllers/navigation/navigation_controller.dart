@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:up_todo/src/features/personalization/screens/profile/profile.dart';
-import 'package:up_todo/src/features/todo/screens/calender/calender.dart';
-import 'package:up_todo/src/features/todo/screens/focus/focus.dart';
-import 'package:up_todo/src/features/todo/screens/index/index.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/calender/calender.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/focus/focus.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/index/index.dart';
 
 class NavigationMenuController extends GetxController {
   static NavigationMenuController get instance =>
