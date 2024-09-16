@@ -15,6 +15,7 @@ dependencies:
   flutter_native_splash: ^2.4.1
   connectivity_plus: ^6.0.5
   internet_connection_checker: ^2.0.0
+  # cupertino_calendar_picker: ^2.0.0+1
 
 
   # ICONS #
