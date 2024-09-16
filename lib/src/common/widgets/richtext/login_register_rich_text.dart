@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../utils/constants/colors.dart';
 
@@ -7,15 +8,18 @@ class ULoginRegisterRichText extends StatelessWidget {
     super.key,
     required this.text,
     required this.addText,
+    required this.location,
   });
 
   final String text, addText;
+  final String location;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
-        onTap: () {},
+        // Navigate to the login screen
+        onTap: () => context.pushReplacementNamed(location),
         child: RichText(
           text: TextSpan(
               text: text,
