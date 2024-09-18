@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:up_todo/src/features/authenication/repositories(data)/auth_repository.dart';
+import 'package:up_todo/src/features/authenication/repositories/auth_repository.dart';
 import 'package:up_todo/src/utils/helpers/network_manager.dart';
 import 'package:up_todo/src/utils/popups/network_request_popup.dart';
 

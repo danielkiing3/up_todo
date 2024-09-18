@@ -6,7 +6,7 @@ import 'package:up_todo/src/utils/popups/snackbar_popup.dart';
 
 import '../../../../../utils/helpers/network_manager.dart';
 import '../../../../../utils/popups/network_request_popup.dart';
-import '../../../repositories(data)/auth_repository.dart';
+import '../../../repositories/auth_repository.dart';
 
 class RegisterNotifier extends Notifier {
   @override
