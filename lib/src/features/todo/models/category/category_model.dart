@@ -21,9 +21,32 @@ class Category {
 
   Category({
     required this.name,
+    this.isCreateNewButton = false,
     required this.icon,
     required this.iconColor,
-    this.isCreateNewButton = false,
   }) : backgroundColor =
             HSLColor.fromColor(iconColor).withLightness(0.75).toColor();
+
+  // Convert Category to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'isCreateNewButton': isCreateNewButton,
+      'icon': icon.codePoint, // Store icon as its code point
+      'iconColor': iconColor.value, // Store color as an integer value
+      'backgroundColor':
+          backgroundColor.value, // Store background color as an integer
+    };
+  }
+
+  /// Create a Category from JSON
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(
+      name: json['name'],
+      isCreateNewButton: json['isCreateNewButton'] ?? false,
+      icon: IconData(json['icon'],
+          fontFamily: 'MaterialIcons'), // Restore IconData using code point
+      iconColor: Color(json['iconColor']), // Restore Color using integer value
+    );
+  }
 }
