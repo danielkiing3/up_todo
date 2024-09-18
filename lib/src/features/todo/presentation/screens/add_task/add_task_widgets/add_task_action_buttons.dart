@@ -5,7 +5,7 @@ import 'package:up_todo/src/features/todo/presentation/controllers/add_todo/add_
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../controllers/add_todo/task_tag_provider.dart';
-import '../add_todo_popup.dart';
+import '../add_task_popup.dart';
 
 class AddTaskActionButtons extends ConsumerWidget {
   /// Custom Widget for the bottom action button for the Add Task Dialog
@@ -22,7 +22,7 @@ class AddTaskActionButtons extends ConsumerWidget {
           children: [
             // -- Date Picker Button
             IconButton(
-                onPressed: () => TodoBottomSheet.showDateDialog(context, ref),
+                onPressed: () => TaskBottomSheet.showDateDialog(context, ref),
                 icon: Icon(
                   IconsaxPlusLinear.timer_1,
                   // Conditionally change the color if [date] is selected
@@ -31,7 +31,7 @@ class AddTaskActionButtons extends ConsumerWidget {
 
             // -- Category Button
             IconButton(
-                onPressed: () => TodoBottomSheet.showCategoryDialog(context),
+                onPressed: () => TaskBottomSheet.showCategoryDialog(context),
                 icon: Icon(
                   IconsaxPlusLinear.tag,
                   // Conditionally change the color if [category] is selected
@@ -40,7 +40,7 @@ class AddTaskActionButtons extends ConsumerWidget {
 
             // -- Priority Button
             IconButton(
-                onPressed: () => TodoBottomSheet.showPriorityDialog(context),
+                onPressed: () => TaskBottomSheet.showPriorityDialog(context),
                 icon: Icon(
                   IconsaxPlusLinear.flag,
                   // Conditionally change the color if [priority] is selected
