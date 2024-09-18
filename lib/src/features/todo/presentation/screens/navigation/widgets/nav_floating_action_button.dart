@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/add_task/add_todo_popup.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/add_task/add_task_popup.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 
@@ -15,7 +15,7 @@ class UNavFloatingActionButton extends StatelessWidget {
       height: 64,
       width: 64,
       child: FloatingActionButton(
-        onPressed: () => TodoBottomSheet.addTodoDialog(context),
+        onPressed: () => TaskBottomSheet.addTodoDialog(context),
         backgroundColor: UColors.buttonPrimary,
         elevation: 0,
         shape: const CircleBorder(),
