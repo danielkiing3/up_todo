@@ -4,7 +4,7 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
-import '../../../controllers/add_todo/choose_priority_provider.dart';
+import '../../../controllers/add_task/choose_priority_provider.dart';
 
 /// Widget for the individal tag on the Task Priority Dialog
 class TaskPriorityTag extends ConsumerWidget {

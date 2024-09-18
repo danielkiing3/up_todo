@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../utils/constants/texts.dart';
-import '../../../controllers/add_todo/choose_category_provider.dart';
+import '../../../controllers/add_task/choose_category_provider.dart';
 
 /// Custom action button widget for the Choose Category Dialog
 class ChooseCategoryActionButton extends ConsumerWidget {

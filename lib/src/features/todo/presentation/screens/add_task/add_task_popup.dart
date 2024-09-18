@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:up_todo/src/common/widgets/dialog/dialog.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_todo/add_todo_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task/add_task_provider.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
 import 'package:up_todo/src/utils/validators/validation.dart';
 
-import '../../controllers/add_todo/date_provider.dart';
+import '../../controllers/add_task/date_provider.dart';
 import 'add_task_widgets/add_task_action_buttons.dart';
 import 'add_task_widgets/add_task_tag_row.dart';
 import 'choose_category_widget.dart/choose_category_action_button.dart';

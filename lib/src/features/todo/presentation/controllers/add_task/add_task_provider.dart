@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:up_todo/src/features/todo/models/todo/todo_model.dart';
+import 'package:up_todo/src/features/todo/models/todo/task_model.dart';
 import 'package:up_todo/src/features/todo/services/todo_service_repository.dart';
 
 import 'task_tag_provider.dart';

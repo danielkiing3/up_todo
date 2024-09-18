@@ -4,7 +4,7 @@ import 'package:up_todo/src/utils/constants/colors.dart';
 
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../models/category/category_model.dart';
-import '../../../controllers/add_todo/choose_category_provider.dart';
+import '../../../controllers/add_task/choose_category_provider.dart';
 
 class ChooseCategoryTag extends ConsumerWidget {
   /// Custom widget to build the individual Category Container

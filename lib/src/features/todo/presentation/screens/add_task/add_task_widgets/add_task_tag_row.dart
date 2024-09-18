@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
 import '../../../../../../common/widgets/chip/task_chip.dart';
-import '../../../controllers/add_todo/task_tag_provider.dart';
+import '../../../controllers/add_task/task_tag_provider.dart';
 
 class AddTaskTagRow extends ConsumerWidget {
   /// Custom widget to display the selected tag

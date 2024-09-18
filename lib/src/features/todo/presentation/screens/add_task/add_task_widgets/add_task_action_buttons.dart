@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_todo/add_todo_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task/add_task_provider.dart';
 
 import '../../../../../../utils/constants/colors.dart';
-import '../../../controllers/add_todo/task_tag_provider.dart';
+import '../../../controllers/add_task/task_tag_provider.dart';
 import '../add_task_popup.dart';
 
 class AddTaskActionButtons extends ConsumerWidget {

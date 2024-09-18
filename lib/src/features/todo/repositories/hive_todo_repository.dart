@@ -1,18 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:up_todo/src/features/todo/models/todo/todo_model.dart';
+import 'package:up_todo/src/features/todo/models/todo/task_model.dart';
 import 'package:up_todo/src/features/todo/repositories/abstract/abstract_databse_repo.dart';
 
 class HiveTodoRepository extends DatabaseRepository {
   String todoBoxName = 'todoBox';
 
-  late Box<Todo> _hive;
-  late List<Todo> _box;
+  late Box<Task> _hive;
+  late List<Task> _box;
 
   /// Function to fetch all the todo from the Hive box named [todoBoxName]
   @override
-  Future<List<Todo>> fetchAllTask() async {
-    _hive = await Hive.openBox<Todo>(todoBoxName);
+  Future<List<Task>> fetchAllTask() async {
+    _hive = await Hive.openBox<Task>(todoBoxName);
     _box = _hive.values.toList();
 
     return _box;
@@ -21,7 +21,7 @@ class HiveTodoRepository extends DatabaseRepository {
   /// -- Function to add todo to the Todo Hive database
   /// The new todo is added to the last index of the box
   @override
-  Future<void> addNewTask(Todo todo) async {
+  Future<void> addNewTask(Task todo) async {
     await _hive.add(todo);
   }
 
@@ -33,7 +33,7 @@ class HiveTodoRepository extends DatabaseRepository {
   }
 
   @override
-  Future<void> updateTask(int index, Todo todo) async {
+  Future<void> updateTask(int index, Task todo) async {
     await _hive.putAt(index, todo);
   }
 }
