@@ -34,16 +34,15 @@ dependencies:
 
   # STATE MANAGEMENT #
   flutter_riverpod: ^2.5.1 # Main State Management
-  get: ^4.6.6
 
-  # I want to migrate to a different storage solution as well
-  # Maybe [SqLite], [Hive], [Moor], [Shared Preferences]
+
   # LOCAL STORAGE
   shared_preferences: ^2.3.2 
-
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   
+  # LOGGER
+  logger: ^2.4.0
 
   # Routing / Navigation
   go_router: ^14.2.7
