@@ -16,11 +16,6 @@ class _AppState extends ConsumerState<App> {
     return MaterialApp.router(
       themeMode: ThemeMode.dark,
       theme: UAppTheme.appTheme,
-      localizationsDelegates: const [
-        //     GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate,
-        // GlobalCupertinoLocalizations.delegate,
-      ],
       routerConfig: router,
     );
   }

@@ -17,7 +17,10 @@ class OnboardingSkip extends ConsumerWidget {
       left: USizes.defaultSpace,
       child: TextButton(
         onPressed: ref.read(onboardingProvider.notifier).skipPage,
-        child: const Text(UTexts.skip),
+        child: Text(
+          UTexts.skip,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
     );
   }

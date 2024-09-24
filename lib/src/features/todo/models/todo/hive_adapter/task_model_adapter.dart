@@ -12,7 +12,7 @@ class TaskModelAdapter extends TypeAdapter<Task> {
     final description = reader.read() as String?;
     final date = reader.read() as DateTime?;
     final time = reader.read() as String?;
-    final priority = reader.read() as int;
+    final priority = reader.read() as int?;
     final categoryId = reader.read() as String?;
     final isCompleted = reader.readBool();
 

@@ -33,8 +33,13 @@ class AddTaskNotifier extends Notifier {
 
     // Talking to the Todo Service
     await ref.read(todoServiceProvider.notifier).addNewTask(todo);
+
+    // -- Clearing controller
+    title.clear(); // Title controller
+    description.clear(); // Description controller
+    ref.read(taskTagProvider.notifier).clearValues(); //
+
     if (context.mounted) {
-      print("Worked");
       context.pop();
     }
   }

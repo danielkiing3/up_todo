@@ -23,7 +23,7 @@ class TaskPriorityActionButton extends ConsumerWidget {
           // -- Cancel Button
           child: TextButton(
             onPressed: () =>
-                ref.read(priorityProvider.notifier).cancel(context),
+                ref.read(choosePriorityProvider.notifier).cancel(context),
             child: Text(
               UTexts.cancel,
               style: Theme.of(context)
@@ -36,7 +36,8 @@ class TaskPriorityActionButton extends ConsumerWidget {
         Expanded(
           // -- Save button
           child: ElevatedButton(
-            onPressed: () => ref.read(priorityProvider.notifier).save(context),
+            onPressed: () =>
+                ref.read(choosePriorityProvider.notifier).save(context),
             style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
                 backgroundColor:
                     WidgetStateProperty.all(UColors.buttonSecondary)),

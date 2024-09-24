@@ -6,7 +6,7 @@ class UTextTheme {
   UTextTheme._();
 
   static TextTheme textTheme = TextTheme(
-    // Headline
+    // -- Headline
     headlineLarge: const TextStyle().copyWith(
         fontSize: USizes.fontSizeXl,
         fontWeight: FontWeight.bold,
@@ -20,7 +20,7 @@ class UTextTheme {
         fontWeight: FontWeight.w600,
         color: UColors.textPrimary),
 
-    // Title
+    // -- Title
     titleLarge: const TextStyle().copyWith(
         fontSize: USizes.fontSizeLg,
         fontWeight: FontWeight.w600,
@@ -34,7 +34,7 @@ class UTextTheme {
         fontWeight: FontWeight.w400,
         color: UColors.textPrimary),
 
-    // Body
+    // -- Body
     bodyLarge: const TextStyle().copyWith(
         fontSize: USizes.fontSizeSm,
         fontWeight: FontWeight.w500,
@@ -48,7 +48,7 @@ class UTextTheme {
         fontWeight: FontWeight.w500,
         color: UColors.textPrimary.withOpacity(0.5)),
 
-    // Label
+    // -- Label
     labelLarge: const TextStyle().copyWith(
         fontSize: USizes.fontSizeXs,
         fontWeight: FontWeight.w600,

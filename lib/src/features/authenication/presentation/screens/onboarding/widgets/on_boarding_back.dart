@@ -17,7 +17,10 @@ class OnboardingBack extends ConsumerWidget {
       left: USizes.defaultSpace,
       child: TextButton(
         onPressed: ref.read(onboardingProvider.notifier).backPage,
-        child: const Text(UTexts.back),
+        child: Text(
+          UTexts.back,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
     );
   }

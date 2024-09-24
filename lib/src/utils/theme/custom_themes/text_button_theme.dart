@@ -8,7 +8,8 @@ class UTextButtonTheme {
   static TextButtonThemeData textButtonThemeData = TextButtonThemeData(
     style: TextButton.styleFrom(
       elevation: 0,
-      foregroundColor: UColors.white.withOpacity(0.44),
+      // foregroundColor: UColors.white.withOpacity(0.44),
+      foregroundColor: UColors.buttonPrimary,
       textStyle: const TextStyle(
         fontSize: USizes.fontSizeSm,
         fontWeight: FontWeight.w400,

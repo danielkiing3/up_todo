@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:up_todo/src/common/styles/spacing_style_appbar.dart';
-import 'package:up_todo/src/features/personalization/screens/profile/settings.dart';
+import 'package:up_todo/src/features/personalization/screens/profile/widgets/modals/change_account_name_modal.dart';
 import 'package:up_todo/src/utils/constants/image_strings.dart';
+import 'package:up_todo/src/utils/constants/routes.dart';
 import 'package:up_todo/src/utils/constants/sizes.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
 
@@ -47,7 +48,7 @@ class ProfileScreen extends ConsumerWidget {
               USettingMenuTile(
                 leadingIcon: IconsaxPlusLinear.setting_2,
                 title: UTexts.appSettings,
-                onTap: () => Get.to(() => const AppSettingsScreen()),
+                onTap: () => context.goNamed(URoutes.settingsScreen),
               ),
               const SizedBox(height: USizes.spaceBtwItems),
 
@@ -66,7 +67,7 @@ class ProfileScreen extends ConsumerWidget {
               USettingMenuTile(
                 leadingIcon: IconsaxPlusLinear.camera,
                 title: UTexts.changeAccountImage,
-                onTap: () {},
+                onTap: () => ProfileModal.changeAccountImage(context),
               ),
               const SizedBox(height: USizes.spaceBtwItems),
 

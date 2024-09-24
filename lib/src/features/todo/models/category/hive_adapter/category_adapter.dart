@@ -19,7 +19,11 @@ class CategoryAdapter extends TypeAdapter<Category> {
 
     return Category(
       name: name,
-      icon: IconData(iconCode, fontFamily: iconFamily),
+      icon: IconData(
+        iconCode,
+        fontFamily: iconFamily,
+        fontPackage: 'iconsax_plus',
+      ),
       iconColor: Color(iconColorValue),
       isCreateNewButton: isCreatedNewButton,
       id: id,

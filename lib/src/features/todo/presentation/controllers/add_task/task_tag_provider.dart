@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task/choose_priority_provider.dart';
 
 import '../../../models/category/category_model.dart';
 import '../../../models/category/category_tag_model.dart';
@@ -14,7 +15,15 @@ class TaskTagNotifer extends Notifier<TaskTag> {
     state = state.updatePriority(priority: priority);
   }
 
+  void clearValues() {
+    deletePriority();
+    deleteCategory();
+    deleteDate();
+  }
+
   void deletePriority() {
+    // Reset the choose
+    ref.read(choosePriorityProvider.notifier).reset();
     state = state.updatePriority(priority: null);
   }
 

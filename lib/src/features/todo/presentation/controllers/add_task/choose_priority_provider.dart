@@ -19,11 +19,16 @@ class ChoosePriorityNotifier extends Notifier<int> {
     Navigator.of(context).pop();
   }
 
+  // Function to reset the value of the task priority to 1
+  void reset() {
+    state = 1;
+  }
+
   void save(BuildContext context) {
     ref.read(taskTagProvider.notifier).updatePriority(state);
     context.pop();
   }
 }
 
-final priorityProvider =
+final choosePriorityProvider =
     NotifierProvider<ChoosePriorityNotifier, int>(ChoosePriorityNotifier.new);
