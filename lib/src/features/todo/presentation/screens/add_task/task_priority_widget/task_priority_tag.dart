@@ -21,10 +21,10 @@ class TaskPriorityTag extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(priorityProvider);
+    final state = ref.watch(choosePriorityProvider);
 
     return GestureDetector(
-      onTap: () => ref.read(priorityProvider.notifier).update(value),
+      onTap: () => ref.read(choosePriorityProvider.notifier).update(value),
       child: Container(
         padding: const EdgeInsets.all(USizes.xs),
         decoration: BoxDecoration(
