@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:up_todo/src/features/todo/models/todo/task_model.dart';
 import 'package:up_todo/src/features/todo/repositories/abstract/abstract_databse_repo.dart';
 
+/// Repository for Todo stored in the Hive Local Storage
 class HiveTodoRepository extends DatabaseRepository {
   String todoBoxName = 'todoBox';
 
@@ -21,20 +22,27 @@ class HiveTodoRepository extends DatabaseRepository {
   /// -- Function to add todo to the Todo Hive database
   /// The new todo is added to the last index of the box
   @override
-  Future<void> addNewTask(Task todo) async {
-    await _hive.add(todo);
+  Future<void> addNewTask(Task task) async {
+    await _hive.add(task);
   }
 
-  // -- Function to delete todo by Todo id
+  /// -- Function to delete todo by Todo id
   @override
   Future<void> deleteTask(String id) async {
     await _hive
-        .deleteAt(_hive.values.toList().indexWhere((todo) => todo.id == id));
+        .deleteAt(_hive.values.toList().indexWhere((task) => task.id == id));
   }
 
+  /// Function call to update the value of a [Task] at the previous index in Hive
   @override
-  Future<void> updateTask(int index, Task todo) async {
-    await _hive.putAt(index, todo);
+  Future<void> updateTask(int index, Task task) async {
+    await _hive.putAt(index, task);
+  }
+
+  // Function to delete all values in the Hive box
+  @override
+  Future<void> deleteAllTask() async {
+    await _hive.clear();
   }
 }
 

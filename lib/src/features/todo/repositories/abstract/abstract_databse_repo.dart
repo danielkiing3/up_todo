@@ -6,4 +6,5 @@ abstract class DatabaseRepository {
   Future<List<Task>> fetchAllTask(); // Read
   Future<void> updateTask(int index, Task todo); // Update
   Future<void> deleteTask(String id); // Delete
+  Future<void> deleteAllTask(); // Delete All Task
 }

@@ -28,15 +28,11 @@ class TodoServiceNotifier extends AsyncNotifier<List<Task>> {
     final oldValue = [...?state.value, todo];
     state = AsyncData(oldValue);
 
-    //TODO: Explore the option of using Isolates
     // Update the local Hive repo
     await ref.read(hiveTodoRepositoryProvider).addNewTask(todo);
-
-    // Update remote db
   }
 
   Future<void> deleteTask(String todoId) async {
-    // TODO: Handle race condition in case another async function is going on
     final oldValue = [...?state.value?.where((todo) => todo.id != todoId)];
 
     state = AsyncData(oldValue);
