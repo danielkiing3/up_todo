@@ -53,4 +53,35 @@ class UColors {
   /// -- Category Color
   static const Color orange = Color.fromARGB(255, 201, 204, 65);
   static const Color lightGreen = Color.fromARGB(255, 102, 204, 65);
+
+  //// -- Create Category Colors
+  static const Color category1 = Color.fromARGB(255, 201, 204, 65);
+  static const Color category2 = Color.fromARGB(255, 102, 204, 65);
+  static const Color category3 = Color.fromARGB(255, 65, 204, 167);
+  static const Color category4 = Color.fromARGB(255, 65, 129, 204);
+  static const Color category5 = Color.fromARGB(255, 65, 162, 204);
+  static const Color category6 = Color.fromARGB(255, 204, 132, 65);
+  static const Color category7 = Color.fromARGB(255, 151, 65, 204);
+  static const Color category8 = Color.fromARGB(255, 204, 65, 115);
+  static const Color category9 = Color.fromARGB(255, 23, 12, 231);
+  static const Color category10 = Color.fromARGB(255, 228, 153, 13);
+  static const Color category11 = Color.fromARGB(255, 141, 25, 199);
+  static const Color category12 = Color.fromARGB(255, 148, 211, 29);
+}
+
+class UCreateCategoryColors {
+  static List<Color> colors = [
+    UColors.category1,
+    UColors.category2,
+    UColors.category3,
+    UColors.category4,
+    UColors.category5,
+    UColors.category6,
+    UColors.category7,
+    UColors.category8,
+    UColors.category9,
+    UColors.category10,
+    UColors.category11,
+    UColors.category12,
+  ];
 }
