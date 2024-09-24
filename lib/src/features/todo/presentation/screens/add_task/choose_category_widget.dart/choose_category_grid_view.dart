@@ -18,19 +18,25 @@ class ChooseCategoryGridView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesRepository);
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const AlwaysScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 10,
-      ),
-      itemCount: categories.length,
-      itemBuilder: (_, index) {
-        final category = categories[index];
-        return ChooseCategoryTag(category);
+    return categories.when(
+      data: (value) {
+        return ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 470),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const AlwaysScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, crossAxisSpacing: 20, mainAxisSpacing: 10),
+            itemCount: value.length,
+            itemBuilder: (_, index) {
+              final category = value[index];
+              return ChooseCategoryTag(category);
+            },
+          ),
+        );
       },
+      error: (error, stackTrace) => const SizedBox(),
+      loading: () => const SizedBox(),
     );
   }
 }

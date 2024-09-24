@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:up_todo/src/utils/constants/colors.dart';
+import 'package:up_todo/src/utils/constants/routes.dart';
 
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../models/category/category_model.dart';
@@ -24,7 +26,12 @@ class ChooseCategoryTag extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        ref.read(chooseCategoryProvider.notifier).update(category);
+        if (category.isCreateNewButton == false) {
+          ref.read(chooseCategoryProvider.notifier).update(category);
+        } else {
+          // TaskBottomSheet.showCreateNewDialog(context);
+          context.pushNamed(URoutes.createCategoryScreen);
+        }
       },
       child: Column(
         children: [

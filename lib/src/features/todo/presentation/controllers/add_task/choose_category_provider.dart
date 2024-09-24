@@ -18,8 +18,6 @@ class ChooseCategoryNotifier extends Notifier<Category?> {
   void update(Category value) {
     if (value.isCreateNewButton == false) {
       state = value;
-    } else {
-      //TODO: Open create category full screen modal
     }
   }
 
