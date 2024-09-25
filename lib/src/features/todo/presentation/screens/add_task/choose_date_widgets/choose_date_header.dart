@@ -29,7 +29,7 @@ class ChooseDateHeader extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Month
-            Text(UCalenderHelperFunction.getNameMonth(currentMonthYear.month)),
+            Text(UDatetimeHelperFunction.getNameMonth(currentMonthYear.month)),
             // Year
             Text(
               currentMonthYear.year.toString(),

@@ -27,7 +27,7 @@ class ChooseDateGridView extends ConsumerWidget {
       itemCount: 35,
       itemBuilder: (ctx, index) {
         final date =
-            UCalenderHelperFunction.getDateForIndex(index, currentMonthYear);
+            UDatetimeHelperFunction.getDateForIndex(index, currentMonthYear);
 
         // Check if the tab is right month
         final isRightMonth = currentMonthYear.month == date.month;
