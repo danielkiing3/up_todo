@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:up_todo/src/utils/helpers/calender_helper_functions.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
@@ -79,7 +80,8 @@ class _TaskTileState extends ConsumerState<TaskTile> {
                     // -- Date
                     if (widget.task.date != null)
                       Text(
-                        'Today at 16:05', //TODO: Update to formatted date
+                        UDatetimeHelperFunction.getFormatedDateTime(
+                            widget.task.date!), //TODO: Update to formatted date
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
