@@ -76,6 +76,12 @@ class UDatetimeHelperFunction {
     }
   }
 
+  // Function to check if the date is a oldDate
+  static bool isOldDate(DateTime dateTime) {
+    final now = DateTime.now();
+    return dateTime.isBefore(now);
+  }
+
   // Return the formattedDateTime with days and formatted time
   static String getFormatedDateTime(DateTime dateTime) {
     final now = DateTime.now();
