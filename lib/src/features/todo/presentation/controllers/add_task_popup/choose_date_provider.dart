@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_task/choose_time_provider.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_task/task_tag_provider.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/add_task/add_task_popup.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task_popup/choose_time_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task_popup/task_tag_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/add_task_popup/add_task_popup.dart';
 
 class DateNotifier extends Notifier<DateTime?> {
   @override

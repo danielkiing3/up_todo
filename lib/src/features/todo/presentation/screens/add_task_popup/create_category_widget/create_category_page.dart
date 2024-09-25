@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:up_todo/src/common/widgets/appbar/app_bar.dart';
 import 'package:up_todo/src/features/todo/presentation/controllers/create_category/create_category_provider.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/add_task/create_category_widget/create_category_action_button.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/add_task_popup/create_category_widget/create_category_action_button.dart';
 import 'package:up_todo/src/utils/constants/sizes.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
 

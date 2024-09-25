@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/texts.dart';
-import '../../../controllers/add_task/choose_priority_provider.dart';
+import '../../../controllers/add_task_popup/choose_priority_provider.dart';
 
 /// Action Button for the Task Priority Dialog
 /// Contains

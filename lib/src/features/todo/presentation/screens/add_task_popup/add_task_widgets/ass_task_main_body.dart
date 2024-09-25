@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../utils/constants/texts.dart';
 import '../../../../../../utils/validators/validation.dart';
-import '../../../controllers/add_task/add_task_provider.dart';
+import '../../../controllers/add_task_popup/add_task_provider.dart';
 import 'add_task_action_buttons.dart';
 import 'add_task_tag_row.dart';
 

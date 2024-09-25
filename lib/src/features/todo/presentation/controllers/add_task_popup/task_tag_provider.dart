@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_task/choose_priority_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task_popup/choose_priority_provider.dart';
 
 import '../../../models/category/category_model.dart';
 import '../../../models/category/category_tag_model.dart';

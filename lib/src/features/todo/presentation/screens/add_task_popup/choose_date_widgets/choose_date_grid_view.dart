@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/calender_helper_functions.dart';
-import '../../../controllers/add_task/choose_date_provider.dart';
+import '../../../controllers/add_task_popup/choose_date_provider.dart';
 
 class ChooseDateGridView extends ConsumerWidget {
   const ChooseDateGridView({

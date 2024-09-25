@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:up_todo/src/features/todo/presentation/controllers/add_task/choose_date_provider.dart';
 
 import '../../../../../../utils/constants/texts.dart';
+import '../../../controllers/add_task_popup/choose_date_provider.dart';
 
-class ChooseDateActionButtons extends ConsumerWidget {
-  const ChooseDateActionButtons({
+class ChooseTimeActionButtons extends ConsumerWidget {
+  const ChooseTimeActionButtons({
     super.key,
   });
 
@@ -13,7 +13,7 @@ class ChooseDateActionButtons extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
-        // -- Cancel button
+        // -- Cancel
         Expanded(
           child: TextButton(
             onPressed: () =>
@@ -22,13 +22,14 @@ class ChooseDateActionButtons extends ConsumerWidget {
           ),
         ),
 
-        // - Choose time button
+        // -- Save
         Expanded(
-            child: ElevatedButton(
-          onPressed: () =>
-              ref.read(chooseDateProvider.notifier).chooseTime(context),
-          child: const Text(UTexts.chooseTime),
-        ))
+          child: ElevatedButton(
+            onPressed: () =>
+                ref.read(chooseDateProvider.notifier).save(context),
+            child: const Text(UTexts.save),
+          ),
+        ),
       ],
     );
   }

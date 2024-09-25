@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:up_todo/src/utils/helpers/calender_helper_functions.dart';
 
 import '../../../../../../common/widgets/chip/task_chip.dart';
-import '../../../controllers/add_task/task_tag_provider.dart';
+import '../../../controllers/add_task_popup/task_tag_provider.dart';
 
 class AddTaskTagRow extends ConsumerWidget {
   /// Custom widget to display the selected tag
@@ -34,8 +35,9 @@ class AddTaskTagRow extends ConsumerWidget {
           ),
         if (taskTag.date != null)
           UTaskChip(
-            chipName: taskTag.date!.toString(),
-            iconData: IconsaxPlusLinear.clock,
+            chipName:
+                UDatetimeHelperFunction.getFormatedDateTime(taskTag.date!),
+            iconData: IconsaxPlusLinear.clock_1,
             onTap: () => ref.read(taskTagProvider.notifier).deleteDate(),
           ),
       ],
