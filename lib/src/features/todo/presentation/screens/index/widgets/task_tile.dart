@@ -81,11 +81,12 @@ class _TaskTileState extends ConsumerState<TaskTile> {
                     if (widget.task.date != null)
                       Text(
                         UDatetimeHelperFunction.getFormatedDateTime(
-                            widget.task.date!), //TODO: Update to formatted date
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: UColors.textSecondary),
+                            widget.task.date!),
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: UDatetimeHelperFunction.isOldDate(
+                                    widget.task.date!)
+                                ? UColors.error
+                                : UColors.textSecondary),
                       ),
                     const Spacer(),
                     Row(
