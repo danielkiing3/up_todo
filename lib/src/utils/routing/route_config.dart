@@ -1,41 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logger/web.dart';
 import 'package:up_todo/src/features/authenication/presentation/screens/login/login.dart';
 import 'package:up_todo/src/features/authenication/presentation/screens/register/register.dart';
+import 'package:up_todo/src/features/personalization/screens/profile/profile.dart';
 import 'package:up_todo/src/features/personalization/screens/profile/settings.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/add_task/create_category_widget/create_category_page.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/navigation/navigation_menu.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/add_task_popup/create_category_widget/create_category_page.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/calender/calender.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/edit_task/edit_task.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/focus/focus.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/index/index.dart';
+import 'package:up_todo/main_app_screen.dart';
 import 'package:up_todo/src/utils/constants/routes.dart';
 import 'package:up_todo/src/utils/routing/routing_provider.dart';
 
 import '../../features/authenication/presentation/screens/onboarding/on_boarding.dart';
 import '../../features/authenication/presentation/screens/onboarding/start.dart';
 
-var logger = Logger();
+// Create keys for `root` & `section` navigator avoiding unnecessary rebuilds
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _sectionNavigatorKey = GlobalKey<NavigatorState>();
 
 // Gorouter configuration
 final router = GoRouter(
-  initialLocation: '/',
-  // initialLocation: '/start_screen',
-  // TODO: Fix the redirect issue
-  // redirect: (_, state) async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-
-  //   if (user != null) {
-  //     print(user);
-  //     // If the user is logged in, redirect to the home screen (e.g., '/')
-  //     return '/';
-  //   } else if (user == null && state.matchedLocation != '/onboarding') {
-  //     // If user is not logged in, and they're not already on the onboarding screen, redirect to onboarding
-  //     return '/onboarding';
-  //   }
-
-  //   // Return null if no redirection is needed
-  //   return null;
-  // },
-  routes: [
+  navigatorKey: _rootNavigatorKey,
+  // initialLocation: '/onboarding',
+  routes: <RouteBase>[
     // Onboarding Route
     GoRoute(
       name: URoutes.onboarding,
@@ -62,18 +52,70 @@ final router = GoRouter(
       ],
     ),
 
-    // Main App Route
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainAppScreen(navigationShell);
+      },
+      branches: <StatefulShellBranch>[
+        // -- Index
+        StatefulShellBranch(
+          navigatorKey: _sectionNavigatorKey,
+          routes: <RouteBase>[
+            GoRoute(
+              name: URoutes.indexScreen,
+              path: '/',
+              builder: (context, state) => const IndexScreen(),
+            )
+          ],
+        ),
+
+        // -- Calender
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: URoutes.calenderScreen,
+              path: '/calender',
+              builder: (context, state) => const CalenderScreen(),
+            )
+          ],
+        ),
+
+        // -- Focus
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: URoutes.focusScreen,
+              path: '/focus',
+              builder: (context, state) => const FocusScreen(),
+            )
+          ],
+        ),
+
+        // -- Profile
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: URoutes.profileScreen,
+              path: '/profile',
+              builder: (context, state) => const ProfileScreen(),
+            )
+          ],
+        ),
+      ],
+    ),
+
+    // Settings
+
     GoRoute(
-        name: URoutes.homeScreen,
-        path: '/',
-        builder: (context, state) => const NavigationMenu(),
-        routes: [
-          GoRoute(
-            path: 'settings',
-            name: URoutes.settingsScreen,
-            builder: (context, state) => const AppSettingsScreen(),
-          ),
-        ]),
+      path: '/settings',
+      name: URoutes.settingsScreen,
+      builder: (context, state) => const AppSettingsScreen(),
+    ),
+    GoRoute(
+      path: '/edit_task',
+      name: URoutes.editTaskScreen,
+      builder: (context, state) => const EditTaskScreen(),
+    ),
 
     GoRoute(
       name: URoutes.createCategoryScreen,
@@ -82,72 +124,3 @@ final router = GoRouter(
     ),
   ],
 );
-
-// This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
-final _navigatorKey = GlobalKey<NavigatorState>();
-
-GoRouter? _previousRouter;
-
-final routerProvider = Provider((ref) {
-  return GoRouter(
-    initialLocation: '/start_screen',
-    navigatorKey: _navigatorKey,
-    routes: [
-      // Onboarding Route
-      GoRoute(
-        name: URoutes.onboarding,
-        path: '/onboarding',
-        builder: (context, state) => const OnBoardingScreen(),
-      ),
-
-      // Authenication Route
-      GoRoute(
-        name: URoutes.startScreen,
-        path: '/start_screen',
-        builder: (context, state) => const StartScreen(),
-        routes: [
-          GoRoute(
-            name: URoutes.loginScreen,
-            path: 'login_screen',
-            builder: (context, state) => const LoginScreen(),
-          ),
-          GoRoute(
-            name: URoutes.createAccountScreen,
-            path: 'register_screen',
-            builder: (context, state) => const RegisterScreen(),
-          ),
-        ],
-      ),
-
-      // Main App Route
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const NavigationMenu(),
-      )
-    ],
-    redirect: (_, state) {
-      final isFirstTime = ref.read(isFirstTimeProvider).value ?? false;
-      logger.w('FirsTime: $isFirstTime');
-      if (isFirstTime) {
-        return '/onboarding';
-      }
-
-      final authState = ref.read(authProvider);
-      if (authState.isLoading || authState.hasError) return null;
-
-      final isAuthenticated = authState.valueOrNull != null;
-      // final isAuthenticating =
-      // state.matchedLocation == '/onboaring/start_screen';
-
-      if (isAuthenticated) {
-        return '/';
-      }
-
-      // if (isAuthenticating) {
-      //   return '/';
-      // }
-
-      return null;
-    },
-  );
-});
