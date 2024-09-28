@@ -15,6 +15,7 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
       theme: UAppTheme.appTheme,
       routerConfig: router,
     );
