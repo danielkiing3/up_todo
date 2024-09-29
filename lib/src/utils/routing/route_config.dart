@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:up_todo/src/features/authenication/presentation/screens/login/login.dart';
 import 'package:up_todo/src/features/authenication/presentation/screens/register/register.dart';
@@ -12,7 +11,6 @@ import 'package:up_todo/src/features/todo/presentation/screens/focus/focus.dart'
 import 'package:up_todo/src/features/todo/presentation/screens/index/index.dart';
 import 'package:up_todo/main_app_screen.dart';
 import 'package:up_todo/src/utils/constants/routes.dart';
-import 'package:up_todo/src/utils/routing/routing_provider.dart';
 
 import '../../features/authenication/presentation/screens/onboarding/on_boarding.dart';
 import '../../features/authenication/presentation/screens/onboarding/start.dart';

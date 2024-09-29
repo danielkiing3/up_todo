@@ -92,6 +92,7 @@ class UTexts {
   static const String health = 'Health';
   static const String movie = 'Movie';
   static const String home = 'Home';
+  static const String edit = 'Edit';
 
   /// -- Settings Menu Title
   static const String appSettings = 'App Settings';

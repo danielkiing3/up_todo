@@ -48,7 +48,7 @@ class ProfileScreen extends ConsumerWidget {
               USettingMenuTile(
                 leadingIcon: IconsaxPlusLinear.setting_2,
                 title: UTexts.appSettings,
-                onTap: () => context.goNamed(URoutes.settingsScreen),
+                onTap: () => context.pushNamed(URoutes.settingsScreen),
               ),
               const SizedBox(height: USizes.spaceBtwItems),
 
