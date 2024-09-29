@@ -17,34 +17,39 @@ class IndexSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: UColors.borderPrimary),
-          borderRadius: BorderRadius.circular(USizes.sm),
-          color: UColors.darkestGrey,
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: USizes.smallDefaultSpace,
-          vertical: USizes.buttonHeight,
-        ),
-        child: Row(
-          children: [
-            Icon(
-              IconsaxPlusLinear.search_normal,
-              color: UColors.textSecondary,
-              size: 30,
-            ),
-            const SizedBox(width: USizes.smallDefaultSpace),
-            Text(
-              UTexts.searchForTask,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(color: UColors.textSecondary),
-            )
-          ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: USizes.spaceBtwSections,
+      ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: UColors.borderPrimary),
+            borderRadius: BorderRadius.circular(USizes.sm),
+            color: UColors.darkestGrey,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: USizes.smallDefaultSpace,
+            vertical: USizes.buttonHeight,
+          ),
+          child: Row(
+            children: [
+              Icon(
+                IconsaxPlusLinear.search_normal,
+                color: UColors.textSecondary,
+                size: 30,
+              ),
+              const SizedBox(width: USizes.smallDefaultSpace),
+              Text(
+                UTexts.searchForTask,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: UColors.textSecondary),
+              )
+            ],
+          ),
         ),
       ),
     );
