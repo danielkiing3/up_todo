@@ -48,11 +48,12 @@ class ChooseDateGridView extends ConsumerWidget {
               borderRadius: BorderRadius.circular(6),
             ),
             child: Center(
-                child: Text(
-              date.day.toString(),
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: !isRightMonth ? UColors.textSecondary : null),
-            )),
+              child: Text(
+                date.day.toString(),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: !isRightMonth ? UColors.textSecondary : null),
+              ),
+            ),
           ),
         );
       },
