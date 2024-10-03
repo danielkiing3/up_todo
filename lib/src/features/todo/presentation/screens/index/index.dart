@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:up_todo/src/common/widgets/appbar/app_bar.dart';
+import 'package:up_todo/src/features/todo/models/todo/task_model.dart';
 import 'package:up_todo/src/features/todo/services/todo_service_repository.dart';
 import 'package:up_todo/src/utils/constants/image_strings.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
@@ -29,7 +30,7 @@ class IndexScreen extends ConsumerWidget {
         ],
       ),
       body: taskValue.when(
-        data: (value) {
+        data: (List<Task> value) {
           if (value.isEmpty) {
             return const EmptyHomePlaceholder();
           } else {
