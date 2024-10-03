@@ -19,10 +19,16 @@ class HomeContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Task List
-    final activeTasks =
-        taskList.where((task) => task.isCompleted == false).toList();
-    final completedTasks =
-        taskList.where((task) => task.isCompleted == true).toList();
+    final List<Task> activeTasks = taskList
+        .where((task) => task.isCompleted == false)
+        .toList()
+        .reversed
+        .toList();
+    final completedTasks = taskList
+        .where((task) => task.isCompleted == true)
+        .toList()
+        .reversed
+        .toList();
 
     // Reading the visibility states
     final showTodayList = ref.watch(todayListVisibilityProvider);
