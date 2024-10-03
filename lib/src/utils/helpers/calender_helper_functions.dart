@@ -38,6 +38,14 @@ class UDatetimeHelperFunction {
     return calculatedDate;
   }
 
+  static DateTime getCalenderDateFromIndex(int index, DateTime currentMonth) {
+    // Get which day of the week the value is
+    int dayOfWeek = currentMonth.weekday % 7;
+
+    DateTime firstDateOfWeek = currentMonth.subtract(Duration(days: dayOfWeek));
+    return firstDateOfWeek.add(Duration(days: index));
+  }
+
   /// Returns the name of the month corresponding to the [month] value.
   /// If [isFull] is true, the full uppercase name of the month is returned (e.g., "FEBRUARY").
   /// If [isFull] is false, the short version is returned (e.g., "Feb").
@@ -73,6 +81,30 @@ class UDatetimeHelperFunction {
         return isFull ? 'DECEMBER' : 'Dec';
       default:
         return 'INVALID MONTH';
+    }
+  }
+
+  static String getNameDay(
+    int day, {
+    bool isFull = false,
+  }) {
+    switch (day) {
+      case 0:
+        return isFull ? 'SUNDAY' : 'SUN';
+      case 1:
+        return isFull ? 'MONDAY' : 'MON';
+      case 2:
+        return isFull ? 'TUESDAY' : 'TUE';
+      case 3:
+        return isFull ? 'WEDNESDAY' : 'WED';
+      case 4:
+        return isFull ? 'THURSDAY' : 'THU';
+      case 5:
+        return isFull ? 'FRIDAY' : 'FRI';
+      case 6:
+        return isFull ? 'SATURDAY' : 'SAT';
+      default:
+        return 'INVALID DAY';
     }
   }
 
