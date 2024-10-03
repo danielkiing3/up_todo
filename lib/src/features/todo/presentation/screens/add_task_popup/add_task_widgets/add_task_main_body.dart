@@ -19,7 +19,7 @@ class AddTaskMainBody extends ConsumerWidget {
         top: 30,
         left: 25,
         right: 25,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+        bottom: MediaQuery.viewInsetsOf(context).bottom + 20,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
