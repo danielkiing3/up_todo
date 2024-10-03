@@ -77,3 +77,7 @@ final currentMonthProvider = StateProvider<DateTime>((ref) {
   final now = DateTime.now();
   return DateTime(now.year, now.month, 1);
 });
+
+final currentDayProvider = StateProvider.autoDispose<DateTime>((ref) {
+  return DateTime.now();
+});

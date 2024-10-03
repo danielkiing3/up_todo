@@ -16,10 +16,6 @@ class ChooseTimeNotifier extends Notifier {
     minuteController = FixedExtentScrollController(initialItem: now.minute);
     amPmController = FixedExtentScrollController(initialItem: isAm ? 1 : 0);
   }
-
-  void updatePresentTime() {
-    final newNow = DateTime.now();
-  }
 }
 
 final chooseTimeProvider =
