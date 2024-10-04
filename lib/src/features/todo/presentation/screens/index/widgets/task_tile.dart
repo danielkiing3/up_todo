@@ -47,6 +47,7 @@ class _TaskTileState extends ConsumerState<TaskTile> {
         child: Row(
           children: [
             Checkbox(
+              key: ValueKey(widget.task.id),
               shape: const CircleBorder(
                 side: BorderSide(width: 5),
               ),
@@ -64,6 +65,8 @@ class _TaskTileState extends ConsumerState<TaskTile> {
                   // --Titile
                   Text(
                     widget.task.title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
 
