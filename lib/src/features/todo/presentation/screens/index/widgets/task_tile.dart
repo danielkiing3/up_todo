@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:up_todo/src/features/todo/presentation/controllers/edit_task/edit_task_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/index/widgets/task_alert_dialog.dart';
 import 'package:up_todo/src/utils/constants/routes.dart';
 import 'package:up_todo/src/utils/helpers/calender_helper_functions.dart';
 
@@ -31,102 +33,141 @@ class TaskTile extends ConsumerStatefulWidget {
 }
 
 class _TaskTileState extends ConsumerState<TaskTile> {
+  /// Dismissible background widget
+  Widget slideLeftBackground() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(USizes.sm),
+        color: UColors.error,
+      ),
+      child: const Align(
+        alignment: Alignment.centerRight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Icon(IconsaxPlusLinear.trash),
+            SizedBox(width: 20),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onLongPress: () {
-        ref.read(editTaskProvider.notifier).openEditTask(widget.task);
-        context.pushNamed(URoutes.editTaskScreen);
+    return Dismissible(
+      key: ValueKey(widget.task.id),
+      background: slideLeftBackground(),
+      direction: DismissDirection.endToStart,
+      confirmDismiss: (direction) async {
+        await showDialog(
+          context: context,
+          builder: (context) {
+            return TaskAlertDialog(
+              title: widget.task.title,
+              taskId: widget.task.id,
+            );
+          },
+        );
+        return null;
       },
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.21),
-            borderRadius: BorderRadius.circular(USizes.sm)),
-        padding: const EdgeInsets.only(
-            top: USizes.sm, bottom: USizes.sm, right: USizes.md),
-        child: Row(
-          children: [
-            Checkbox(
-              key: ValueKey(widget.task.id),
-              shape: const CircleBorder(
-                side: BorderSide(width: 5),
+      child: GestureDetector(
+        onTap: () {
+          ref.read(editTaskProvider.notifier).openEditTask(widget.task);
+          context.pushNamed(URoutes.editTaskScreen);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: UColors.bottomSheetPrimary,
+            borderRadius: BorderRadius.circular(USizes.sm),
+          ),
+          padding: const EdgeInsets.only(
+              top: USizes.sm, bottom: USizes.sm, right: USizes.md),
+          child: Row(
+            children: [
+              Checkbox(
+                key: ValueKey(widget.task.id),
+                shape: const CircleBorder(
+                  side: BorderSide(width: 5),
+                ),
+                value: widget.task.isCompleted,
+                onChanged: (value) {
+                  ref
+                      .read(todoServiceProvider.notifier)
+                      .updateTask(widget.task.complete(value!));
+                },
               ),
-              value: widget.task.isCompleted,
-              onChanged: (value) {
-                ref
-                    .read(todoServiceProvider.notifier)
-                    .updateTask(widget.task.complete(value!));
-              },
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // --Titile
-                  Text(
-                    widget.task.title,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-
-                  // -- Description
-                  if (widget.task.description != null &&
-                      widget.task.description!.trim().isNotEmpty)
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // --Titile
                     Text(
-                      widget.task.description!,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      maxLines: 1,
+                      widget.task.title,
                       overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
 
-                  // -- Task Tag
-                  if (widget.task.date != null ||
-                      widget.task.categoryId != null ||
-                      widget.task.priority != null)
-                    const SizedBox(height: USizes.xs),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // -- Date
-                      if (widget.task.date != null)
-                        Text(
-                          UDatetimeHelperFunction.getFormatedDateTime(
-                              widget.task.date!),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
+                    // -- Description
+                    if (widget.task.description != null &&
+                        widget.task.description!.trim().isNotEmpty)
+                      Text(
+                        widget.task.description!,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+
+                    // -- Task Tag
+                    if (widget.task.date != null ||
+                        widget.task.categoryId != null ||
+                        widget.task.priority != null)
+                      const SizedBox(height: USizes.xs),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        // -- Date
+                        if (widget.task.date != null)
+                          Text(
+                            UDatetimeHelperFunction.getFormatedDateTime(
+                                widget.task.date!),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
                                   color: UDatetimeHelperFunction.isOldDate(
                                           widget.task.date!)
                                       ? UColors.error
-                                      : UColors.textSecondary),
-                        ),
-                      const Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // -- Category
-                          if (widget.task.categoryId != null)
-                            CategoryTag(
-                              ref
-                                  .read(categoriesRepository.notifier)
-                                  .getCategory(widget.task.categoryId!),
-                            ),
+                                      : UColors.textSecondary,
+                                ),
+                          ),
+                        const Spacer(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            // -- Category
+                            if (widget.task.categoryId != null)
+                              CategoryTag(
+                                ref
+                                    .read(categoriesRepository.notifier)
+                                    .getCategory(widget.task.categoryId!),
+                              ),
 
-                          // -- Priority
-                          if (widget.task.priority != null) ...[
-                            const SizedBox(width: USizes.sm + 6),
-                            PriorityTag(priority: widget.task.priority!)
-                          ]
-                        ],
-                      )
-                    ],
-                  )
-                ],
+                            // -- Priority
+                            if (widget.task.priority != null) ...[
+                              const SizedBox(width: USizes.sm + 6),
+                              PriorityTag(priority: widget.task.priority!)
+                            ],
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
