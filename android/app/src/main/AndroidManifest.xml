@@ -1,7 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
      <!-- Permissions for internet_connection_checker -->
      <uses-permission android:name="android.permission.INTERNET"/>
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     <!-- Permission for Usage Stat-->
+     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+     <!-- Permission for Android Package Manager Use-->
+     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <application
         android:label="up_todo"

@@ -16,9 +16,14 @@ dependencies:
   connectivity_plus: ^6.0.5
   internet_connection_checker: ^1.0.0+1
   uuid: ^4.5.0
+
+  # Android Specific
+  app_usage: ^3.0.1
+  android_package_manager: ^0.7.1
   
   # UI 
   modal_bottom_sheet: ^3.0.0
+  fl_chart: ^0.69.0
 
   # ICONS #
   cupertino_icons: ^1.0.6
