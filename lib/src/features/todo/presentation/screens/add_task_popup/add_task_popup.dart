@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:up_todo/src/common/widgets/dialog/dialog.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/edit_task/edit_task.dart';
 import 'package:up_todo/src/utils/constants/texts.dart';
 
 import 'add_task_widgets/add_task_main_body.dart';
@@ -54,6 +56,15 @@ class TaskBottomSheet {
           actionButton: TaskPriorityActionButton(),
         );
       },
+    );
+  }
+
+  static void iosBottomSheet(BuildContext context) {
+    CupertinoScaffold.showCupertinoModalBottomSheet(
+      context: context,
+      useRootNavigator: true,
+      expand: true,
+      builder: (context) => const EditTaskScreen(),
     );
   }
 
