@@ -3,7 +3,7 @@ class AppUsageBarModel {
   /// Integer value to represent the current day of the week
   final int dayIndex;
 
-  // Floating point value to show the time in [hours] of the particular Bar Rod
+  /// Floating point value to show the time in [hours] of the particular Bar Rod
   final double usageTime;
 
   AppUsageBarModel({
