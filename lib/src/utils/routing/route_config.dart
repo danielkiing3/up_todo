@@ -7,7 +7,7 @@ import 'package:up_todo/src/features/personalization/screens/profile/settings.da
 import 'package:up_todo/src/features/todo/presentation/screens/add_task_popup/create_category_widget/create_category_page.dart';
 import 'package:up_todo/src/features/todo/presentation/screens/calender/calender.dart';
 import 'package:up_todo/src/features/todo/presentation/screens/edit_task/edit_task.dart';
-import 'package:up_todo/src/features/todo/presentation/screens/focus/focus.dart';
+import 'package:up_todo/src/features/focus/presentation/screen/focus.dart';
 import 'package:up_todo/src/features/todo/presentation/screens/index/index.dart';
 import 'package:up_todo/main_app_screen.dart';
 import 'package:up_todo/src/utils/constants/routes.dart';

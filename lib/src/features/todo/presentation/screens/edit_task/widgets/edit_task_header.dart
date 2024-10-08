@@ -20,46 +20,51 @@ class EditTaskHeader extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            // Checkbox
-            Checkbox(
-              shape: const CircleBorder(
-                side: BorderSide(width: 5),
-              ),
-              value: checkBoxValue,
-              onChanged: (value) {
-                // Update the Todo in the Service
-                ref.read(todoServiceProvider.notifier).updateTask(
-                      ref.read(currentEditProvider).complete(value!),
-                    );
-
-                // Update the state of the checkBox provider as well
-                ref.read(checkBoxEditProvider.notifier).state = value;
-              },
-            ),
-            // Title
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall,
+        Expanded(
+          child: Row(
+            children: [
+              // Checkbox
+              Checkbox(
+                shape: const CircleBorder(
+                  side: BorderSide(width: 5),
                 ),
-                if (description != null && description.trim().isNotEmpty) ...[
-                  const SizedBox(height: 10),
-                  Text(
-                    description,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  )
-                ]
-              ],
-            ),
-          ],
+                value: checkBoxValue,
+                onChanged: (value) {
+                  // Update the Todo in the Service
+                  ref.read(todoServiceProvider.notifier).updateTask(
+                        ref.read(currentEditProvider).complete(value!),
+                      );
+
+                  // Update the state of the checkBox provider as well
+                  ref.read(checkBoxEditProvider.notifier).state = value;
+                },
+              ),
+              // Title
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    if (description != null &&
+                        description.trim().isNotEmpty) ...[
+                      const SizedBox(height: 10),
+                      Text(
+                        description,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    ]
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
 
         //Edit button

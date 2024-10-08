@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'src/common/navigation/bottom_nav_bar.dart';
 import 'src/common/navigation/nav_floating_action_button.dart';
@@ -12,12 +13,14 @@ class MainAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // resizeToAvoidBottomInset: false, // fluter 2.x
-      floatingActionButton: const UNavFloatingActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: UBottomNavBar(navigationShell),
-      body: navigationShell,
+    return CupertinoScaffold(
+      body: Scaffold(
+        // resizeToAvoidBottomInset: false, // fluter 2.x
+        floatingActionButton: const UNavFloatingActionButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: UBottomNavBar(navigationShell),
+        body: navigationShell,
+      ),
     );
   }
 }

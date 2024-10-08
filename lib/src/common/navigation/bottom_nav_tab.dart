@@ -35,7 +35,10 @@ class BottomNavTab extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(controller == index ? activeIcon : icon),
+            Icon(
+              controller == index ? activeIcon : icon,
+              color: Colors.white,
+            ),
             const SizedBox(height: USizes.sm),
             Text(label)
           ],

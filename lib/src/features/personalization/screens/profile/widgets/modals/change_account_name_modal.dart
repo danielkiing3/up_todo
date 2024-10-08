@@ -7,6 +7,7 @@ class ProfileModal {
   static void changeAccountImage(BuildContext context) {
     showModalBottomSheet(
         context: context,
+        useRootNavigator: true,
         isScrollControlled: false,
         builder: (context) => Container(
               decoration: BoxDecoration(

@@ -44,6 +44,7 @@ class UColors {
 
   /// -- Neutral Shades
   static const Color black = Color.fromARGB(255, 0, 0, 0);
+  static const Color lightGrey = Color.fromARGB(255, 165, 165, 165);
   static const Color grey = Color.fromARGB(255, 83, 83, 83);
   static const Color darkGrey = Color.fromARGB(255, 79, 79, 79);
   static const Color darkerGrey = Color.fromARGB(255, 29, 29, 29);

@@ -25,13 +25,13 @@ class EditTaskScreen extends ConsumerWidget {
   }
 }
 
-class EditTaskContent extends ConsumerWidget {
+class EditTaskContent extends StatelessWidget {
   const EditTaskContent({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.all(20),
       child: Column(
