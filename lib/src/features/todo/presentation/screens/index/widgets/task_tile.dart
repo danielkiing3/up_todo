@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:up_todo/src/features/todo/presentation/controllers/edit_task/edit_task_provider.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/add_task_popup/add_task_popup.dart';
+import 'package:up_todo/src/features/todo/presentation/screens/edit_task/edit_task.dart';
 import 'package:up_todo/src/features/todo/presentation/screens/index/widgets/task_alert_dialog.dart';
 import 'package:up_todo/src/utils/constants/routes.dart';
 import 'package:up_todo/src/utils/helpers/calender_helper_functions.dart';
@@ -74,7 +79,13 @@ class _TaskTileState extends ConsumerState<TaskTile> {
       child: GestureDetector(
         onTap: () {
           ref.read(editTaskProvider.notifier).openEditTask(widget.task);
-          context.pushNamed(URoutes.editTaskScreen);
+          if (Platform.isAndroid) {
+            context.pushNamed(URoutes.editTaskScreen);
+          }
+
+          if (Platform.isIOS) {
+            TaskBottomSheet.iosBottomSheet(context);
+          }
         },
         child: Container(
           decoration: BoxDecoration(
@@ -125,24 +136,25 @@ class _TaskTileState extends ConsumerState<TaskTile> {
                         widget.task.priority != null)
                       const SizedBox(height: USizes.xs),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // -- Date
                         if (widget.task.date != null)
-                          Text(
-                            UDatetimeHelperFunction.getFormatedDateTime(
-                                widget.task.date!),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: UDatetimeHelperFunction.isOldDate(
-                                          widget.task.date!)
-                                      ? UColors.error
-                                      : UColors.textSecondary,
-                                ),
+                          Flexible(
+                            child: Text(
+                              UDatetimeHelperFunction.getFormatedDateTime(
+                                  widget.task.date!),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color: UDatetimeHelperFunction.isOldDate(
+                                            widget.task.date!)
+                                        ? UColors.error
+                                        : UColors.textSecondary,
+                                  ),
+                            ),
                           ),
-                        const Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
