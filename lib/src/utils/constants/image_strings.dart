@@ -25,6 +25,6 @@ class UImages {
       'assets/images/on_boarding/on_boarding_image3.png';
 
   /// -- User Image
-  static String user = 'assets/images/randoms/user.png';
+  static String user = 'assets/images/randoms/saps.png';
   static String profilePicture = 'assets/images/randoms/profile_picture.png';
 }

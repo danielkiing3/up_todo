@@ -22,7 +22,7 @@ class UTexts {
   static const String description = 'Description';
   static const String exampleTitle = 'e.g. Do your bills';
   static const String chooseTime = 'Choose Time';
-  static const String placeholdeerUser = 'Funmi Emma';
+  static const String placeholdeerUser = 'Bola Pain T.';
 
   /// -- Unboarding Title
   static const String onBoardingTitle1 = 'Manage your tasks';
