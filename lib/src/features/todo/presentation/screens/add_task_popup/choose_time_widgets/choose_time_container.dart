@@ -30,7 +30,7 @@ class ChooseTimeContainer extends ConsumerWidget {
               childDelegate: ListWheelChildListDelegate(
                 children: Iterable<int>.generate(12)
                     .toList()
-                    .map((hour) => Text((hour).toString()))
+                    .map((hour) => Text((hour).toString().padLeft(2, '0')))
                     .toList(),
               ),
             ),
@@ -59,7 +59,7 @@ class ChooseTimeContainer extends ConsumerWidget {
               childDelegate: ListWheelChildListDelegate(
                 children: Iterable.generate(60)
                     .toList()
-                    .map((hour) => Text((hour).toString()))
+                    .map((hour) => Text((hour).toString().padLeft(2, '0')))
                     .toList(),
               ),
             ),

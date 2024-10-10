@@ -37,7 +37,8 @@ class AddTaskNotifier extends Notifier {
     // -- Clearing controller
     title.clear(); // Title controller
     description.clear(); // Description controller
-    ref.read(taskTagProvider.notifier).clearValues(); //
+    // Cleared the task tag provider class
+    ref.read(taskTagProvider.notifier).clearValues();
 
     if (context.mounted) {
       context.pop();

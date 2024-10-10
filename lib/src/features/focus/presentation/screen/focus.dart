@@ -88,6 +88,7 @@ class FocusScreen extends ConsumerWidget {
                     ),
                   ),
 
+                  // -- App Usage Bar Chart
                   const SliverToBoxAdapter(
                     child: SizedBox(
                       height: 280,

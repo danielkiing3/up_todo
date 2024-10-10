@@ -48,7 +48,7 @@ class _TaskTileState extends ConsumerState<TaskTile> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(IconsaxPlusLinear.trash),
+            Icon(IconsaxPlusLinear.trash, color: Colors.white),
             SizedBox(width: 20),
           ],
         ),

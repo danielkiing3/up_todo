@@ -46,6 +46,9 @@ class DateNotifier extends Notifier<DateTime?> {
     // Pop screen
     context.pop();
 
+    // Remove focus from keyboard
+    FocusScope.of(context).unfocus();
+
     TaskBottomSheet.showTimeDialog(context);
   }
 

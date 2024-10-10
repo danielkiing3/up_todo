@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:up_todo/src/features/todo/presentation/controllers/add_task_popup/choose_date_provider.dart';
 import 'package:up_todo/src/features/todo/presentation/controllers/add_task_popup/choose_priority_provider.dart';
 
 import '../../../models/category/category_model.dart';
@@ -41,6 +42,11 @@ class TaskTagNotifer extends Notifier<TaskTag> {
   }
 
   void deleteDate() {
+    // Reset selectedDate value to current Date
+    ref.read(selectedDateProvider.notifier).update((state) {
+      final now = DateTime.now();
+      return DateTime(now.year, now.month, now.day);
+    });
     state = state.updateDate(date: null);
   }
 }
