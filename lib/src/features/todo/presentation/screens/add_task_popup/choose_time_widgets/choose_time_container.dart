@@ -57,7 +57,7 @@ class ChooseTimeContainer extends ConsumerWidget {
                   ref.read(chooseTimeProvider.notifier).minuteController,
               overAndUnderCenterOpacity: 0.2,
               childDelegate: ListWheelChildListDelegate(
-                children: Iterable<int>.generate(60)
+                children: Iterable.generate(60)
                     .toList()
                     .map((hour) => Text((hour).toString()))
                     .toList(),

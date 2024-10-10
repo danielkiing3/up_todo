@@ -1,29 +1,51 @@
-# Up Todo App
+# 📋 Up Todo App
 
-A Todo List App
+A simple and efficient Todo List app built with [Flutter](https://flutter.dev/) that helps users manage tasks, focus and stay organized. The app features a clean UI, local data storage using Hive, and state management with Riverpod state management.
 
-Based on UI design by [Amir Baghestani](https://www.figma.com/@amir_uiux)
-UI Link: [UpTodo - Todo list app UI Kit](https://www.figma.com/community/file/1083383246788717048)
+Based on UI deisgn: [UpTodo - Todo list app UI Kit](https://www.figma.com/community/file/1083383246788717048) by [Amir Baghestani](https://www.figma.com/@amir_uiux)
 
-## App UI
-Home Screen
-<img width="333" alt="Screenshot 2024-09-24 at 11 41 20 PM" src="https://github.com/user-attachments/assets/28aec499-172f-4722-bea4-ff6a9e474ec8">
 
-Custom Date Picker and Time Picker
-https://github.com/user-attachments/assets/7bd35ea5-e310-44a1-97d4-2a8c01609ee9
+# 🚀 Features
+- Create, edit, and delete tasks with ease
+- Mark tasks as completed or uncompleted
+- See a calender view of your tasks
+- Focus timer for time management
+- Custom date and time picker for scheduling tasks
+- Local storage with Hive for fast no-SQL db
+- State management using Riverpod
 
+# 📱 Screenshots
+Include screenshots of your app here to showcase the UI and features.
+
+# 🛠️ Tech Stack
+- Framework: Flutter
+- State Management: Riverpod
+- Local Storage: Hive
+- Routing: GoRouter
+- UI Components: Custom widgets, Slivers, ExpansionTile, CustomPainter, and more
 
 
 ## Installation
-Follow the installation guide at [Official Flutter Installation Page](https://docs.flutter.dev/get-started/install)
+To run this app locally, follow these steps:
 
-## Setting up locally 
-- Clone the repo locally
-- Navigate to the folder and run `flutter pub get` to install the required dart packages
+1. Clone the repo locally
 
-Folder Structure
-- Features first(Layers inside Feature)
+```bash
+git clone https://github.com/yourusername/todo-list-app.git
+cd todo-list-app
+```
+2. Install dependencies:
+```bash
+flutter pub get
+```
+3. Run the app:
+```bash
+flutter run
+```
 
+# 💬 Contact
+If you have any questions or feedback, feel free to reach out:
 
-## Running the application
-Simply run `flutter run` command from the terminal
+Email: oluwaferanmiidaniel@gmail.com
+
+GitHub: [danielkiing3](https://github.com/danielkiing3)
