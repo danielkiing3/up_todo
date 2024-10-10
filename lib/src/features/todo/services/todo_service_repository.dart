@@ -19,6 +19,10 @@ class TodoServiceNotifier extends AsyncNotifier<List<Task>> {
     final loadedState =
         await ref.read(hiveTodoRepositoryProvider).fetchAllTask();
     // Set the state to the loaded data
+
+    /// TODO: Testing the app new shimmer effect
+    // await Future.delayed(const Duration(seconds: 10)).then((val) {});
+
     state = AsyncData(loadedState);
 
     return loadedState;
