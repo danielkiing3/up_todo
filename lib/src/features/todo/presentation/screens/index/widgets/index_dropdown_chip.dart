@@ -29,7 +29,7 @@ class IndexDropdownChip extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(USizes.sm),
               color: UColors.white.withOpacity(0.21),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),

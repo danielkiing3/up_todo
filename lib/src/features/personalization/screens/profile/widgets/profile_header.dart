@@ -22,7 +22,7 @@ class UProfileHeader extends StatelessWidget {
 
           // Profile Picture
           CircleAvatar(
-            radius: 50,
+            radius: 60,
             backgroundImage: AssetImage(image),
           ),
           const SizedBox(height: USizes.defaultSpace),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:up_todo/src/features/focus/models/app_usage/app_usage_model.dart';
+import 'package:up_todo/src/features/focus/presentation/controller/app_bar_chart_provider.dart';
 import 'package:up_todo/src/features/focus/presentation/controller/app_usage_provider.dart';
 import 'package:up_todo/src/features/focus/presentation/controller/timer_provider.dart';
 import 'package:up_todo/src/features/focus/presentation/screen/widgets/focus_app_tile.dart';
@@ -15,118 +16,126 @@ class FocusScreen extends ConsumerWidget {
     final appUsageList = ref.watch(appUsageProvider);
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          // -- App Bar
-          const SliverAppBar(
-            title: Center(
-              child: Text('Focus Mode'),
-            ),
-            backgroundColor: Colors.black,
-            pinned: true,
-          ),
-
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 30),
-          ),
-
-          // -- Timer Portion
-          const SliverToBoxAdapter(child: FoucsTimer()),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: Text(
-                'While your focus mode is on, all of your notifications will be off',
-                textAlign: TextAlign.center,
+      body: RefreshIndicator.adaptive(
+        displacement: 60,
+        onRefresh: () async {
+          // Refreshing app usage and app bar chart provider
+          ref.invalidate(appUsageProvider);
+          ref.invalidate(appBarChartProvider);
+        },
+        child: CustomScrollView(
+          slivers: [
+            // -- App Bar
+            const SliverAppBar(
+              title: Center(
+                child: Text('Focus Mode'),
               ),
+              backgroundColor: Colors.black,
+              pinned: true,
             ),
-          ),
 
-          // -- Start Focusing Button
-          SliverToBoxAdapter(
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  ref
-                      .read(timerProvider.notifier)
-                      .startTimer(); // Resume the timer
-
-                  // ref
-                  //     .read(timerProvider.notifier)
-                  //     .pauseTimer(); // Pause the timer
-                },
-                child: const Text('Stop Focusing'),
-              ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 30),
             ),
-          ),
 
-          // -- Overview Tag
-          SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.centerLeft,
+            // -- Timer Portion
+            const SliverToBoxAdapter(child: FoucsTimer()),
+            const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 20, bottom: 20),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Text(
-                  'Overview',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  'While your focus mode is on, all of your notifications will be off',
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
-          ),
 
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 280,
-              child: FocusBarChart(),
-            ),
-          ),
+            // -- Start Focusing Button
+            SliverToBoxAdapter(
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    ref
+                        .read(timerProvider.notifier)
+                        .startTimer(); // Resume the timer
 
-          // -- Application Tag
-          SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 20, bottom: 20),
-                child: Text(
-                  'Application',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                    // ref
+                    //     .read(timerProvider.notifier)
+                    //     .pauseTimer(); // Pause the timer
+                  },
+                  child: const Text('Stop Focusing'),
                 ),
               ),
             ),
-          ),
 
-          // -- App Usage Content
-          appUsageList.when(
-            data: (List<AppUsageModel> appUsage) {
-              return SliverList.separated(
-                itemCount: appUsage.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 16),
-                itemBuilder: (context, index) {
-                  final app = appUsage[index];
-
-                  return FocusAppTile(app: app);
-                },
-              );
-            },
-            error: (error, stackTrace) {
-              return const SliverFillRemaining(
-                child: Center(
+            // -- Overview Tag
+            SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 20, bottom: 20),
                   child: Text(
-                    "Unable to fetch app Data",
-                    textAlign: TextAlign.center,
+                    'Overview',
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
-              );
-            },
-            loading: () => const SliverFillRemaining(
-                child: Center(child: CircularProgressIndicator())),
-          ),
+              ),
+            ),
 
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 60),
-          ),
-        ],
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 280,
+                child: FocusBarChart(),
+              ),
+            ),
+
+            // -- Application Tag
+            SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 20, bottom: 20),
+                  child: Text(
+                    'Application',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ),
+              ),
+            ),
+
+            // -- App Usage Content
+            appUsageList.when(
+              data: (List<AppUsageModel> appUsage) {
+                return SliverList.separated(
+                  itemCount: appUsage.length,
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 16),
+                  itemBuilder: (context, index) {
+                    final app = appUsage[index];
+
+                    return FocusAppTile(app: app);
+                  },
+                );
+              },
+              error: (error, stackTrace) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: Text(
+                      "Unable to fetch app Data",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              },
+              loading: () => const SliverFillRemaining(
+                  child: Center(child: CircularProgressIndicator())),
+            ),
+
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 60),
+            ),
+          ],
+        ),
       ),
     );
   }

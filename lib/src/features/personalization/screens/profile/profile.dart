@@ -27,7 +27,7 @@ class ProfileScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// -- Heading
-              UProfileHeader(image: UImages.profilePicture),
+              UProfileHeader(image: UImages.user),
               const SizedBox(height: USizes.defaultSpace),
 
               /// Task Button

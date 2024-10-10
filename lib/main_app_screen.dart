@@ -15,7 +15,7 @@ class MainAppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoScaffold(
       body: Scaffold(
-        // resizeToAvoidBottomInset: false, // fluter 2.x
+        resizeToAvoidBottomInset: false,
         floatingActionButton: const UNavFloatingActionButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: UBottomNavBar(navigationShell),
