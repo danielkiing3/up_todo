@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:up_todo/src/common/widgets/shimmers/animated_shimmer.dart';
+import 'package:up_todo/src/common/widgets/shimmers/shimmer_container.dart';
 
 import '../../../../../../utils/constants/image_strings.dart';
 import '../../../../../../utils/constants/sizes.dart';
@@ -37,6 +39,35 @@ class EmptyHomePlaceholder extends StatelessWidget {
               UTexts.homeEmptySubtitle,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Shimmer effect for home loading state
+class HomeLoadingPlaceholder extends StatelessWidget {
+  const HomeLoadingPlaceholder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const AnimatedShimmer(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            ShimmerContainer(isSmall: true),
+            ShimmerContainer(),
+            ShimmerContainer(),
+            SizedBox(height: 20),
+            ShimmerContainer(isSmall: true),
+            ShimmerContainer(),
+            ShimmerContainer(),
           ],
         ),
       ),
