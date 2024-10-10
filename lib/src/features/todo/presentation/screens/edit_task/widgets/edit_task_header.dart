@@ -56,7 +56,7 @@ class EditTaskHeader extends ConsumerWidget {
                       Text(
                         description,
                         style: Theme.of(context).textTheme.bodyMedium,
-                        maxLines: 1,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       )
                     ]

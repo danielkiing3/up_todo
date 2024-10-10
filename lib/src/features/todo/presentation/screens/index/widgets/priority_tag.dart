@@ -22,7 +22,11 @@ class PriorityTag extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       child: Row(
         children: [
-          const Icon(IconsaxPlusLinear.flag, size: 16),
+          const Icon(
+            IconsaxPlusLinear.flag,
+            size: 16,
+            color: Colors.white,
+          ),
           const SizedBox(width: 4),
           Text(priority.toString())
         ],

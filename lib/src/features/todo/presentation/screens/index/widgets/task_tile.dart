@@ -137,22 +137,24 @@ class _TaskTileState extends ConsumerState<TaskTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // -- Date
-                        if (widget.task.date != null)
-                          Flexible(
-                            child: Text(
-                              UDatetimeHelperFunction.getFormatedDateTime(
-                                  widget.task.date!),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    color: UDatetimeHelperFunction.isOldDate(
-                                            widget.task.date!)
-                                        ? UColors.error
-                                        : UColors.textSecondary,
-                                  ),
-                            ),
-                          ),
+                        widget.task.date != null
+                            ? Flexible(
+                                child: Text(
+                                  UDatetimeHelperFunction.getFormatedDateTime(
+                                      widget.task.date!),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color:
+                                            UDatetimeHelperFunction.isOldDate(
+                                                    widget.task.date!)
+                                                ? UColors.error
+                                                : UColors.textSecondary,
+                                      ),
+                                ),
+                              )
+                            : const SizedBox(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
