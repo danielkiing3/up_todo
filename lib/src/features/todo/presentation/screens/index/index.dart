@@ -24,8 +24,8 @@ class IndexScreen extends ConsumerWidget {
         leadingIcon: IconsaxPlusLinear.sort,
         title: const Text(UTexts.index),
         actions: [
-          Image(
-            image: AssetImage(UImages.user),
+          CircleAvatar(
+            backgroundImage: AssetImage(UImages.user),
           )
         ],
       ),
@@ -40,7 +40,7 @@ class IndexScreen extends ConsumerWidget {
         error: (error, stackTrace) {
           return;
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const HomeLoadingPlaceholder(),
       ),
     );
   }
