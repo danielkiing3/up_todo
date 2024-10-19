@@ -43,8 +43,8 @@ To run this app locally, follow these steps:
 1. Clone the repo locally
 
 ```bash
-git clone https://github.com/yourusername/todo-list-app.git
-cd todo-list-app
+git clone https://github.com/danielkiing3/up_todo.git
+cd up_todo
 ```
 2. Install dependencies:
 ```bash
